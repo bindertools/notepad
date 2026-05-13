@@ -1,6 +1,36 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import type { Plugin, PluginTabProps } from '@cmdide/plugin-sdk'
-import './notepad.css'
+
+const CSS = `
+.notepad{display:flex;height:100%;background:var(--app-bg,#1e1e1e);color:#ccc;font-family:'Cascadia Code',monospace;font-size:13px}
+.notepad__sidebar{width:220px;border-right:1px solid var(--border-color,#333);display:flex;flex-direction:column;overflow:hidden}
+.notepad__new{margin:10px;background:rgba(79,195,247,.1);border:1px solid rgba(79,195,247,.25);border-radius:5px;color:#4fc3f7;padding:7px;font-size:12px;cursor:pointer}
+.notepad__new:hover{background:rgba(79,195,247,.18)}
+.notepad__list{flex:1;overflow-y:auto}
+.notepad__item{position:relative;padding:9px 12px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.04)}
+.notepad__item:hover{background:rgba(255,255,255,.04)}
+.notepad__item--active{background:rgba(79,195,247,.08)}
+.notepad__item-title{font-size:12px;color:#ddd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.notepad__item-preview{font-size:11px;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.notepad__item-del{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:#555;cursor:pointer;font-size:14px;opacity:0;line-height:1}
+.notepad__item:hover .notepad__item-del{opacity:1}
+.notepad__item-del:hover{color:#f48fb1}
+.notepad__empty{color:#555;font-size:12px;text-align:center;padding:20px}
+.notepad__editor{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.notepad__title{font-size:16px;font-weight:600;color:#ddd;padding:16px 20px 8px;cursor:text;border-bottom:1px solid var(--border-color,#333)}
+.notepad__title-input{font-size:16px;font-weight:600;background:none;border:none;border-bottom:1px solid var(--border-color,#333);color:#ddd;padding:16px 20px 8px;outline:none;width:100%}
+.notepad__body{flex:1;background:none;border:none;color:#ccc;padding:16px 20px;font-size:13px;font-family:inherit;resize:none;outline:none;line-height:1.65}
+.notepad__placeholder{display:flex;align-items:center;justify-content:center;height:100%;color:#555}
+`
+
+let stylesInjected = false
+function injectStyles() {
+  if (stylesInjected || typeof document === 'undefined') return
+  stylesInjected = true
+  const el = document.createElement('style')
+  el.textContent = CSS
+  document.head.appendChild(el)
+}
 
 interface Note {
   id: string
@@ -21,6 +51,8 @@ function saveNotes(notes: Note[]) {
 }
 
 function NotepadTab({ active }: PluginTabProps) {
+  injectStyles()
+
   const [notes, setNotes] = useState<Note[]>(loadNotes)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [editingTitle, setEditingTitle] = useState(false)
@@ -133,7 +165,7 @@ const notepadPlugin: Plugin = {
   id: 'notepad',
   name: 'Notepad',
   description: 'Persistent in-app note-taking with a sidebar list and full editor.',
-  author: 'built-in',
+  author: 'Command-IDE',
   version: '1.0.0',
   tabType: 'notepad',
   tabTitle: 'notepad',
