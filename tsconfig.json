@@ -10,11 +10,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "strict": true,
     "paths": {
       "@cmdide/plugin-sdk": ["../plugin-sdk/index.ts"]
     }
   },
-  "include": ["index.tsx", "notepad.css"]
+  "include": ["index.tsx"]
 }

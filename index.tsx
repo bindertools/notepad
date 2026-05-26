@@ -168,8 +168,12 @@ const notepadPlugin: Plugin = {
   author: 'Command-IDE',
   version: '1.0.0',
   tabType: 'notepad',
-  tabTitle: 'notepad',
+  tabTitle: 'Notepad',
   TabComponent: NotepadTab,
+  commands: [
+    { name: 'notepad', description: 'open notepad tab' },
+    { name: 'note',    description: 'open notepad tab' },
+  ],
 }
 
 export default notepadPlugin
