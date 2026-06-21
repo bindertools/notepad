@@ -13,7 +13,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@cmdide/plugin-sdk': path.resolve(__dirname, '../plugin-sdk/index.ts'),
+      '@binder/plugin-sdk': path.resolve(__dirname, '../plugin-sdk/index.ts'),
     },
   },
   define: {
@@ -23,7 +23,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'index.tsx'),
       formats: ['iife'],
-      name: 'window.__cmdide_plugin__',
+      name: 'window.__binder_plugin__',
       fileName: () => 'index.js',
     },
     rollupOptions: {

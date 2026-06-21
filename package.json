@@ -1,7 +1,7 @@
 {
-  "name": "@cmdide/plugin-notepad",
+  "name": "@binder/plugin-notepad",
   "version": "1.0.0",
-  "description": "Notepad plugin for CMD IDE — persistent in-app note-taking with sidebar and full editor.",
+  "description": "Notepad plugin for Binder — persistent in-app note-taking with sidebar and full editor.",
   "type": "module",
   "scripts": {
     "build": "vite build",

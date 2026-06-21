@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import type { Plugin, PluginTabProps } from '@cmdide/plugin-sdk'
+import type { Plugin, PluginTabProps } from '@binder/plugin-sdk'
 
 const CSS = `
 .notepad{display:flex;height:100%;background:var(--app-bg,#1e1e1e);color:#ccc;font-family:'Cascadia Code',monospace;font-size:13px}
@@ -165,7 +165,7 @@ const notepadPlugin: Plugin = {
   id: 'notepad',
   name: 'Notepad',
   description: 'Persistent in-app note-taking with a sidebar list and full editor.',
-  author: 'Command-IDE',
+  author: 'BinderTools',
   version: '1.0.0',
   tabType: 'notepad',
   tabTitle: 'Notepad',

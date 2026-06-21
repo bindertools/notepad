@@ -13,7 +13,7 @@
     "jsx": "react",
     "strict": true,
     "paths": {
-      "@cmdide/plugin-sdk": ["../plugin-sdk/index.ts"]
+      "@binder/plugin-sdk": ["../plugin-sdk/index.ts"]
     }
   },
   "include": ["index.tsx"]
