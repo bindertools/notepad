@@ -23,7 +23,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'index.tsx'),
       formats: ['iife'],
-      name: 'window.__binder_plugin__',
+      name: 'window.__binder_app__',
       fileName: () => 'index.js',
     },
     rollupOptions: {

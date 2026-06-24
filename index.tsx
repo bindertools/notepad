@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import type { Plugin, PluginTabProps } from '@binder/plugin-sdk'
+import type { AppManifest, AppTabProps } from '@binder/plugin-sdk'
 
 const CSS = `
 .notepad{display:flex;height:100%;background:var(--app-bg,#1e1e1e);color:#ccc;font-family:'Cascadia Code',monospace;font-size:13px}
@@ -50,7 +50,7 @@ function saveNotes(notes: Note[]) {
   try { localStorage.setItem('notepad:notes', JSON.stringify(notes)) } catch {}
 }
 
-function NotepadTab({ active }: PluginTabProps) {
+function NotepadTab({ active }: AppTabProps) {
   injectStyles()
 
   const [notes, setNotes] = useState<Note[]>(loadNotes)
@@ -161,7 +161,13 @@ function NotepadTab({ active }: PluginTabProps) {
   )
 }
 
-const notepadPlugin: Plugin = {
+const NotepadIcon = () => (
+  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+  </svg>
+)
+
+const notepadApp: AppManifest = {
   id: 'notepad',
   name: 'Notepad',
   description: 'Persistent in-app note-taking with a sidebar list and full editor.',
@@ -170,10 +176,11 @@ const notepadPlugin: Plugin = {
   tabType: 'notepad',
   tabTitle: 'Notepad',
   TabComponent: NotepadTab,
+  sidebar: { icon: NotepadIcon, label: 'Notepad' },
   commands: [
     { name: 'notepad', description: 'open notepad tab' },
     { name: 'note',    description: 'open notepad tab' },
   ],
 }
 
-export default notepadPlugin
+export default notepadApp
