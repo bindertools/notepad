@@ -13,7 +13,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@binder/plugin-sdk': path.resolve(__dirname, '../plugin-sdk/index.ts'),
+      '@binder/app-sdk': path.resolve(__dirname, '../plugin-sdk/index.ts'),
     },
   },
   define: {

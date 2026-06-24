@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import type { AppManifest, AppTabProps } from '@binder/plugin-sdk'
+import type { AppManifest, AppTabProps } from '@binder/app-sdk'
 
 const CSS = `
 .notepad{display:flex;height:100%;background:var(--app-bg,#1e1e1e);color:#ccc;font-family:'Cascadia Code',monospace;font-size:13px}
