@@ -13,7 +13,7 @@
     "jsx": "react",
     "strict": true,
     "paths": {
-      "@binder/plugin-sdk": ["../plugin-sdk/index.ts"]
+      "@binder/app-sdk": ["../plugin-sdk/index.ts"]
     }
   },
   "include": ["index.tsx"]
