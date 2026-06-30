@@ -27,7 +27,7 @@ export default defineConfig({
       fileName: () => 'index.js',
     },
     rollupOptions: {
-      // React is provided by the host app via window.React — do not bundle it.
+      // React is provided by the host app via window.React, not bundled.
       external: ['react', 'react-dom'],
       output: {
         globals: {

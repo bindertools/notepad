@@ -1,7 +1,7 @@
 {
   "name": "@binder/plugin-notepad",
   "version": "1.0.0",
-  "description": "Notepad plugin for Binder — persistent in-app note-taking with sidebar and full editor.",
+  "description": "Notepad plugin for Binder. Persistent in-app note-taking with a sidebar list and full editor.",
   "type": "module",
   "scripts": {
     "build": "vite build",
